@@ -66,10 +66,9 @@ public class CategoriesActivity extends AppCompatActivity implements ItemOnClick
     }
 
     @Override
-    public void categoryOnClick() {
+    public void categoryOnClick(String category) {
         Intent intent = new Intent(this,ProductsActivity.class);
-        Toast.makeText(this, "CategoryItem is clicked", Toast.LENGTH_SHORT).show();
-        intent.putExtra("items", (Serializable) items);
+        intent.putExtra("category",category);
         startActivity(intent);
     }
 }

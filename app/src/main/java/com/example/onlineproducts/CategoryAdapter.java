@@ -43,7 +43,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
         String category = items.get(position);
         holder.binding.categoryTxt.setText(category);
         holder.binding.getRoot().setOnClickListener(v -> {
-            itemOnClickListener.categoryOnClick();
+            itemOnClickListener.categoryOnClick(category);
         });
     }
 

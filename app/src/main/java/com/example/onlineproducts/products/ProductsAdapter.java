@@ -16,7 +16,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
     private List<Product> products;
 
-    public ProductsAdapter(List<Product> products){
+    public ProductsAdapter(List<Product> products) {
         this.products = products;
     }
 

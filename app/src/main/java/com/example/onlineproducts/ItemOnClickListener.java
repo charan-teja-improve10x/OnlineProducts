@@ -1,5 +1,5 @@
 package com.example.onlineproducts;
 
 public interface ItemOnClickListener {
-    void categoryOnClick();
+    void categoryOnClick(String category);
 }

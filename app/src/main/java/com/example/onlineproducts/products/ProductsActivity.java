@@ -33,11 +33,11 @@ public class ProductsActivity extends AppCompatActivity {
         binding = ActivityProductsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Intent intent = getIntent();
-        String categoryName = (String) intent.getSerializableExtra("items");
+        String category = intent.getStringExtra("category");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Products");
         actionBar.setDisplayHomeAsUpEnabled(true);
-        fetchProducts();
+        fetchProducts(category);
         createAdapter();
         connectAdapter();
     }
@@ -51,9 +51,9 @@ public class ProductsActivity extends AppCompatActivity {
         binding.productsRv.setAdapter(adapter);
     }
 
-    private void fetchProducts() {
+    private void fetchProducts(String category) {
         FakeApiService fakeApiService = new FakeApi().createFakeApi();
-        Call<List<Product>> call = fakeApiService.fetchProducts("electronics");
+        Call<List<Product>> call = fakeApiService.fetchProducts(category);
         call.enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
