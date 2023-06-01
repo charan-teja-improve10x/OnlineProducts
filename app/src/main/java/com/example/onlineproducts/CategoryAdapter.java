@@ -2,6 +2,7 @@ package com.example.onlineproducts;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import java.util.List;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
 
     private List<String> items;
+    private ItemOnClickListener itemOnClickListener;
     public CategoryAdapter(List<String> items){
         this.items = items;
     }
@@ -38,6 +40,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         String category = items.get(position);
         holder.binding.categoryTxt.setText(category);
+        holder.binding.getRoot().setOnClickListener(v -> {
+            Toast.makeText(v.getContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+            itemOnClickListener.categoryOnClick();
+        });
     }
 
     @Override

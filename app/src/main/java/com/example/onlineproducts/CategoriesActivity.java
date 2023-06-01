@@ -3,6 +3,7 @@ package com.example.onlineproducts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -10,7 +11,9 @@ import com.example.onlineproducts.databinding.ActivityCategoriesBinding;
 import com.example.onlineproducts.models.Product;
 import com.example.onlineproducts.network.FakeApi;
 import com.example.onlineproducts.network.FakeApiService;
+import com.example.onlineproducts.products.ProductsActivity;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CategoriesActivity extends AppCompatActivity {
+public class CategoriesActivity extends AppCompatActivity implements ItemOnClickListener {
 
     private ActivityCategoriesBinding binding;
     private CategoryAdapter categoryAdapter;
@@ -59,5 +62,12 @@ public class CategoriesActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void categoryOnClick() {
+        Intent intent = new Intent(this,ProductsActivity.class);
+        intent.putExtra("items", (Serializable) items);
+        startActivity(intent);
     }
 }
