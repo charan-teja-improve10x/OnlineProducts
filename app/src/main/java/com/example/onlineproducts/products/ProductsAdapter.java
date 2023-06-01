@@ -39,6 +39,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         holder.binding.titleTxt.setText(product.getTitle());
         holder.binding.priceTxt.setText(String.valueOf(product.getPrice()));
         holder.binding.ratingRb.setRating(product.getRating().getRate());
+        holder.binding.rateTxt.setText(String.valueOf(product.getRating().getRate()));
         holder.binding.countTxt.setText(String.valueOf(product.getRating().getCount()));
         Picasso.get().load(product.getImageUrl()).into(holder.binding.imageIv);
     }

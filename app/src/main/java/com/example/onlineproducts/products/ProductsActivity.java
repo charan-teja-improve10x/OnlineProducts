@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -31,10 +32,12 @@ public class ProductsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityProductsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Intent intent = getIntent();
+        String categoryName = (String) intent.getSerializableExtra("items");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Products");
         actionBar.setDisplayHomeAsUpEnabled(true);
-        //fetchProducts();
+        fetchProducts();
         createAdapter();
         connectAdapter();
     }
@@ -48,20 +51,20 @@ public class ProductsActivity extends AppCompatActivity {
         binding.productsRv.setAdapter(adapter);
     }
 
-//    private void fetchProducts() {
-//        FakeApiService fakeApiService = new FakeApi().createFakeApi();
-//        Call<List<Product>> call = fakeApiService.fetchProducts("electronics");
-//        call.enqueue(new Callback<List<Product>>() {
-//            @Override
-//            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-//                Toast.makeText(ProductsActivity.this, "Fetch Success", Toast.LENGTH_LONG).show();
-//                adapter.createProducts(response.body());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Product>> call, Throwable t) {
-//                Toast.makeText(ProductsActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
+    private void fetchProducts() {
+        FakeApiService fakeApiService = new FakeApi().createFakeApi();
+        Call<List<Product>> call = fakeApiService.fetchProducts("electronics");
+        call.enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                Toast.makeText(ProductsActivity.this, "Fetch Success", Toast.LENGTH_LONG).show();
+                adapter.createProducts(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                Toast.makeText(ProductsActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

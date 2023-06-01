@@ -25,7 +25,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
         notifyDataSetChanged();
     }
 
-
+    void setItemOnClickListener(ItemOnClickListener itemOnClickListener) {
+        this.itemOnClickListener = itemOnClickListener;
+    }
 
     @NonNull
     @Override
@@ -41,7 +43,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
         String category = items.get(position);
         holder.binding.categoryTxt.setText(category);
         holder.binding.getRoot().setOnClickListener(v -> {
-            Toast.makeText(v.getContext(), "Item Clicked", Toast.LENGTH_LONG).show();
             itemOnClickListener.categoryOnClick();
         });
     }

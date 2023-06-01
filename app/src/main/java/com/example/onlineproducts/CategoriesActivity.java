@@ -40,6 +40,7 @@ public class CategoriesActivity extends AppCompatActivity implements ItemOnClick
 
     private void setAdapter() {
         categoryAdapter = new CategoryAdapter(items);
+        categoryAdapter.setItemOnClickListener(this);
     }
 
     private void connectAdapter() {
@@ -67,6 +68,7 @@ public class CategoriesActivity extends AppCompatActivity implements ItemOnClick
     @Override
     public void categoryOnClick() {
         Intent intent = new Intent(this,ProductsActivity.class);
+        Toast.makeText(this, "CategoryItem is clicked", Toast.LENGTH_SHORT).show();
         intent.putExtra("items", (Serializable) items);
         startActivity(intent);
     }
