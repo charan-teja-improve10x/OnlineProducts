@@ -2,6 +2,7 @@ package com.example.onlineproducts.products;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
     private List<Product> products;
 
+    private OnProductActionListener onProductActionListener;
+
     public ProductsAdapter(List<Product> products) {
         this.products = products;
     }
@@ -23,6 +26,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     void createProducts(List<Product> products) {
         this.products = products;
         notifyDataSetChanged();
+    }
+
+    void setOnProductActionListener(OnProductActionListener onProductActionListener) {
+        this.onProductActionListener = onProductActionListener;
     }
     @NonNull
     @Override
@@ -42,6 +49,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         holder.binding.rateTxt.setText(String.valueOf(product.getRating().getRate()));
         holder.binding.countTxt.setText(String.valueOf(product.getRating().getCount()));
         Picasso.get().load(product.getImageUrl()).into(holder.binding.imageIv);
+        holder.binding.getRoot().setOnClickListener(v -> {
+            Toast.makeText(v.getContext(), "ProductIsClicked", Toast.LENGTH_SHORT).show();
+            onProductActionListener.onProductClick(product);
+        });
     }
 
     @Override

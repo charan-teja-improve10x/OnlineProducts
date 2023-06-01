@@ -12,6 +12,7 @@ import com.example.onlineproducts.databinding.ActivityProductsBinding;
 import com.example.onlineproducts.models.Product;
 import com.example.onlineproducts.network.FakeApi;
 import com.example.onlineproducts.network.FakeApiService;
+import com.example.onlineproducts.productdetails.ProductsDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductsActivity extends AppCompatActivity {
+public class ProductsActivity extends AppCompatActivity implements OnProductActionListener{
 
     private ActivityProductsBinding binding;
     private ProductsAdapter adapter;
@@ -44,6 +45,7 @@ public class ProductsActivity extends AppCompatActivity {
 
     private void createAdapter() {
         adapter = new ProductsAdapter(products);
+        adapter.setOnProductActionListener(this);
     }
 
     private void connectAdapter(){
@@ -66,5 +68,12 @@ public class ProductsActivity extends AppCompatActivity {
                 Toast.makeText(ProductsActivity.this, "Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onProductClick(Product product) {
+        Intent intent = new Intent(this, ProductsDetailsActivity.class);
+       // intent.putExtra("product",product);
+        startActivity(intent);
     }
 }
