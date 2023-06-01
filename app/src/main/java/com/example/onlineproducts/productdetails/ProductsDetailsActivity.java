@@ -28,23 +28,10 @@ public class ProductsDetailsActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         Intent intent = getIntent();
         int id = intent.getIntExtra("id",0);
-        // ActionBar actionBar = getSupportActionBar();
-      //  actionBar.setTitle("Product Details");
-      //  actionBar.setDisplayHomeAsUpEnabled(true);
-        setProductDetails();
+        getSupportActionBar().setTitle("Product Details");
         fetchProductDetails(id);
     }
 
-    private void setProductDetails() {
-        Product product = new Product();
-        binding.categoryNameTxt.setText(product.getCategory());
-        binding.descriptionTxt.setText(product.getDescription());
-        binding.productPriceTxt.setText(String.valueOf(product.getPrice()));
-        binding.rateCountTxt.setText(String.valueOf(product.getRating().getCount()));
-        binding.ratingTxt.setText(String.valueOf(product.getRating().getRate()));
-        binding.productTitleTxt.setText(product.getTitle());
-        Picasso.get().load(product.getImageUrl()).into(binding.posterIv);
-    }
 
     private void fetchProductDetails(int id) {
         FakeApiService fakeApiService = new FakeApi().createFakeApi();
@@ -53,7 +40,15 @@ public class ProductsDetailsActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Product> call, Response<Product> response) {
                 Toast.makeText(ProductsDetailsActivity.this, "Response Success", Toast.LENGTH_SHORT).show();
-                response.body();
+                Product product = response.body();
+                binding.categoryNameTxt.setText(product.getCategory());
+                binding.descriptionTxt.setText(product.getDescription());
+                binding.productPriceTxt.setText(String.valueOf(product.getPrice()));
+                binding.rateCountTxt.setText(String.valueOf(product.getRating().getCount()));
+                binding.ratingbarRb.getRating();
+                binding.ratingTxt.setText(String.valueOf(product.getRating().getRate()));
+                binding.productTitleTxt.setText(product.getTitle());
+                Picasso.get().load(product.getImageUrl()).into(binding.posterIv);
             }
 
             @Override
