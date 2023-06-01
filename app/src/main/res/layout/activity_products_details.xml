@@ -4,6 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="12dp"
     tools:context=".productdetails.ProductsDetailsActivity">
 
+    <ImageView
+        android:id="@+id/poster_iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/product_title_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/poster_iv" />
+
+    <TextView
+        android:id="@+id/rating_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/ratingbar_rb"
+        app:layout_constraintStart_toEndOf="@+id/ratingbar_rb"
+        app:layout_constraintTop_toBottomOf="@+id/product_title_txt" />
+
+    <RatingBar
+        android:id="@+id/ratingbar_rb"
+        style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_title_txt" />
+
+    <TextView
+        android:id="@+id/rate_count_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/ratingbar_rb"
+        app:layout_constraintStart_toEndOf="@+id/rating_txt"
+        app:layout_constraintTop_toBottomOf="@+id/product_title_txt" />
+
+    <TextView
+        android:id="@+id/description_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/ratingbar_rb"
+        app:layout_constraintTop_toBottomOf="@+id/ratingbar_rb" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/baseline_currency_rupee_24"
+        app:layout_constraintStart_toStartOf="@+id/description_txt"
+        app:layout_constraintTop_toBottomOf="@+id/description_txt" />
+
+    <TextView
+        android:id="@+id/product_price_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/category_name_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

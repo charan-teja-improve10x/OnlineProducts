@@ -51,7 +51,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         Picasso.get().load(product.getImageUrl()).into(holder.binding.imageIv);
         holder.binding.getRoot().setOnClickListener(v -> {
             Toast.makeText(v.getContext(), "ProductIsClicked", Toast.LENGTH_SHORT).show();
-            onProductActionListener.onProductClick(product);
+            onProductActionListener.onProductClick(product.getId());
         });
     }
 

@@ -71,9 +71,9 @@ public class ProductsActivity extends AppCompatActivity implements OnProductActi
     }
 
     @Override
-    public void onProductClick(Product product) {
+    public void onProductClick(int productId) {
         Intent intent = new Intent(this, ProductsDetailsActivity.class);
-       // intent.putExtra("product",product);
+        intent.putExtra("id",productId);
         startActivity(intent);
     }
 }

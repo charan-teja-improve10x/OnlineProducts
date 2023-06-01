@@ -1,5 +1,6 @@
 package com.example.onlineproducts;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -33,6 +34,8 @@ public class CategoriesActivity extends AppCompatActivity implements ItemOnClick
         super.onCreate(savedInstanceState);
         binding = ActivityCategoriesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Categories");
         getCategories();
         setAdapter();
         connectAdapter();
