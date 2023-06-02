@@ -1,4 +1,4 @@
-package com.example.onlineproducts;
+package com.example.onlineproducts.category;
 
 import androidx.recyclerview.widget.RecyclerView;
 

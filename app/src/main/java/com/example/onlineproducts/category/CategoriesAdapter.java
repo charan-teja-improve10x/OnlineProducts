@@ -1,4 +1,4 @@
-package com.example.onlineproducts;
+package com.example.onlineproducts.category;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;

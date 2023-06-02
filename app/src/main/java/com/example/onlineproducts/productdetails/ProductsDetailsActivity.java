@@ -1,23 +1,20 @@
 package com.example.onlineproducts.productdetails;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.onlineproducts.BaseActivity;
 import com.example.onlineproducts.databinding.ActivityProductsDetailsBinding;
 import com.example.onlineproducts.models.Product;
-import com.example.onlineproducts.network.FakeApi;
-import com.example.onlineproducts.network.FakeApiService;
+
 import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductsDetailsActivity extends AppCompatActivity {
+public class ProductsDetailsActivity extends BaseActivity {
 
     private ActivityProductsDetailsBinding binding;
 
@@ -33,7 +30,6 @@ public class ProductsDetailsActivity extends AppCompatActivity {
     }
 
     private void fetchProductDetails(int id) {
-        FakeApiService fakeApiService = new FakeApi().createFakeApi();
         Call<Product> call = fakeApiService.fetchProductDetails(id);
         call.enqueue(new Callback<Product>() {
             @Override

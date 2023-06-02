@@ -1,17 +1,15 @@
 package com.example.onlineproducts.products;
 
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.onlineproducts.BaseActivity;
 import com.example.onlineproducts.databinding.ActivityProductsBinding;
 import com.example.onlineproducts.models.Product;
-import com.example.onlineproducts.network.FakeApi;
-import com.example.onlineproducts.network.FakeApiService;
 import com.example.onlineproducts.productdetails.ProductsDetailsActivity;
 
 import java.util.ArrayList;
@@ -21,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductsActivity extends AppCompatActivity implements OnProductActionListener{
+public class ProductsActivity extends BaseActivity implements OnProductActionListener {
 
     private ActivityProductsBinding binding;
     private ProductsAdapter adapter;
@@ -53,7 +51,6 @@ public class ProductsActivity extends AppCompatActivity implements OnProductActi
     }
 
     private void fetchProducts(String category) {
-        FakeApiService fakeApiService = new FakeApi().createFakeApi();
         Call<List<Product>> call = fakeApiService.fetchProducts(category);
         call.enqueue(new Callback<List<Product>>() {
             @Override

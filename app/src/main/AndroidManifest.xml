@@ -29,7 +29,7 @@
             android:name=".products.ProductsActivity"
             android:exported="false" />
         <activity
-            android:name=".CategoriesActivity"
+            android:name=".category.CategoriesActivity"
             android:exported="false">
         </activity>
         <meta-data

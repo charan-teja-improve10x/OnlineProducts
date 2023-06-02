@@ -1,16 +1,14 @@
-package com.example.onlineproducts;
+package com.example.onlineproducts.category;
 
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.onlineproducts.BaseActivity;
 import com.example.onlineproducts.databinding.ActivityCategoriesBinding;
-import com.example.onlineproducts.network.FakeApi;
-import com.example.onlineproducts.network.FakeApiService;
 import com.example.onlineproducts.products.ProductsActivity;
 
 import java.util.ArrayList;
@@ -20,7 +18,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CategoriesActivity extends AppCompatActivity implements ItemOnClickListener {
+public class CategoriesActivity extends BaseActivity implements ItemOnClickListener {
 
     private ActivityCategoriesBinding binding;
     private CategoriesAdapter categoryAdapter;
@@ -49,7 +47,6 @@ public class CategoriesActivity extends AppCompatActivity implements ItemOnClick
     }
 
     private void getCategories() {
-        FakeApiService fakeApiService = new FakeApi().createFakeApi();
         Call<List<String>> call = fakeApiService.fetchCategories();
         call.enqueue(new Callback<List<String>>() {
             @Override
