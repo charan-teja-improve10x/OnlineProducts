@@ -26,7 +26,7 @@ public class ProductsActivity extends AppCompatActivity implements OnProductActi
     private ActivityProductsBinding binding;
     private ProductsAdapter adapter;
     private List<Product> products = new ArrayList<>();
-
+    private String category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +34,10 @@ public class ProductsActivity extends AppCompatActivity implements OnProductActi
         binding = ActivityProductsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Intent intent = getIntent();
-        String category = intent.getStringExtra("category");
+        category = intent.getStringExtra("category");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Products");
         actionBar.setDisplayHomeAsUpEnabled(true);
-        fetchProducts(category);
         createAdapter();
         connectAdapter();
     }
@@ -48,7 +47,7 @@ public class ProductsActivity extends AppCompatActivity implements OnProductActi
         adapter.setOnProductActionListener(this);
     }
 
-    private void connectAdapter(){
+    private void connectAdapter() {
         binding.productsRv.setLayoutManager(new GridLayoutManager(this,2));
         binding.productsRv.setAdapter(adapter);
     }
@@ -59,7 +58,6 @@ public class ProductsActivity extends AppCompatActivity implements OnProductActi
         call.enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                Toast.makeText(ProductsActivity.this, "Fetch Success", Toast.LENGTH_LONG).show();
                 adapter.createProducts(response.body());
             }
 
@@ -73,7 +71,13 @@ public class ProductsActivity extends AppCompatActivity implements OnProductActi
     @Override
     public void onProductClick(int productId) {
         Intent intent = new Intent(this, ProductsDetailsActivity.class);
-        intent.putExtra("id",productId);
+        intent.putExtra("productId",productId);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchProducts(category);
     }
 }

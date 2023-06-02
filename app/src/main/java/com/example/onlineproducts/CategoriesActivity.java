@@ -9,13 +9,10 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.onlineproducts.databinding.ActivityCategoriesBinding;
-import com.example.onlineproducts.models.Product;
 import com.example.onlineproducts.network.FakeApi;
 import com.example.onlineproducts.network.FakeApiService;
 import com.example.onlineproducts.products.ProductsActivity;
 
-import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +23,7 @@ import retrofit2.Response;
 public class CategoriesActivity extends AppCompatActivity implements ItemOnClickListener {
 
     private ActivityCategoriesBinding binding;
-    private CategoryAdapter categoryAdapter;
+    private CategoriesAdapter categoryAdapter;
     private List<String> items = new ArrayList<>();
 
     @Override
@@ -37,12 +34,12 @@ public class CategoriesActivity extends AppCompatActivity implements ItemOnClick
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Categories");
         getCategories();
-        setAdapter();
+        setupAdapter();
         connectAdapter();
     }
 
-    private void setAdapter() {
-        categoryAdapter = new CategoryAdapter(items);
+    private void setupAdapter() {
+        categoryAdapter = new CategoriesAdapter(items);
         categoryAdapter.setItemOnClickListener(this);
     }
 
@@ -57,21 +54,20 @@ public class CategoriesActivity extends AppCompatActivity implements ItemOnClick
         call.enqueue(new Callback<List<String>>() {
             @Override
             public void onResponse(Call<List<String>> call, Response<List<String>> response) {
-                Toast.makeText(CategoriesActivity.this, "Fetch Success", Toast.LENGTH_LONG).show();
                 categoryAdapter.createCategory(response.body());
             }
 
             @Override
             public void onFailure(Call<List<String>> call, Throwable t) {
-
+                Toast.makeText(CategoriesActivity.this, "Fetch Categories failed", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
     public void categoryOnClick(String category) {
-        Intent intent = new Intent(this,ProductsActivity.class);
-        intent.putExtra("category",category);
+        Intent intent = new Intent(this, ProductsActivity.class);
+        intent.putExtra("category", category);
         startActivity(intent);
     }
 }

@@ -6,7 +6,7 @@ import com.example.onlineproducts.databinding.ProductItemBinding;
 
 public class ProductViewHolder extends RecyclerView.ViewHolder {
 
-    public ProductItemBinding binding;
+    ProductItemBinding binding;
 
     public ProductViewHolder(ProductItemBinding binding) {
         super(binding.getRoot());

@@ -19,7 +19,7 @@ import retrofit2.Response;
 
 public class ProductsDetailsActivity extends AppCompatActivity {
 
-    ActivityProductsDetailsBinding binding;
+    private ActivityProductsDetailsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +27,10 @@ public class ProductsDetailsActivity extends AppCompatActivity {
         binding = ActivityProductsDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Intent intent = getIntent();
-        int id = intent.getIntExtra("id",0);
+        int id = intent.getIntExtra("productId", 0);
         getSupportActionBar().setTitle("Product Details");
         fetchProductDetails(id);
     }
-
 
     private void fetchProductDetails(int id) {
         FakeApiService fakeApiService = new FakeApi().createFakeApi();
@@ -39,13 +38,11 @@ public class ProductsDetailsActivity extends AppCompatActivity {
         call.enqueue(new Callback<Product>() {
             @Override
             public void onResponse(Call<Product> call, Response<Product> response) {
-                Toast.makeText(ProductsDetailsActivity.this, "Response Success", Toast.LENGTH_SHORT).show();
                 Product product = response.body();
-                binding.categoryNameTxt.setText(product.getCategory());
                 binding.descriptionTxt.setText(product.getDescription());
                 binding.productPriceTxt.setText(String.valueOf(product.getPrice()));
                 binding.rateCountTxt.setText(String.valueOf(product.getRating().getCount()));
-                binding.ratingbarRb.getRating();
+                binding.ratingbarRb.setRating(product.getRating().getRate());
                 binding.ratingTxt.setText(String.valueOf(product.getRating().getRate()));
                 binding.productTitleTxt.setText(product.getTitle());
                 Picasso.get().load(product.getImageUrl()).into(binding.posterIv);
@@ -53,7 +50,7 @@ public class ProductsDetailsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Product> call, Throwable t) {
-
+                Toast.makeText(ProductsDetailsActivity.this, "Failed", Toast.LENGTH_SHORT).show();
             }
         });
     }

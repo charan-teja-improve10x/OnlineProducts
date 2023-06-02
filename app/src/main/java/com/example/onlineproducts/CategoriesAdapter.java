@@ -2,21 +2,20 @@ package com.example.onlineproducts;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onlineproducts.databinding.CategoryItemBinding;
-import com.example.onlineproducts.models.Product;
 
 import java.util.List;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
+public class CategoriesAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
 
     private List<String> items;
     private ItemOnClickListener itemOnClickListener;
-    public CategoryAdapter(List<String> items){
+
+    public CategoriesAdapter(List<String> items) {
         this.items = items;
     }
 
@@ -33,7 +32,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        CategoryItemBinding binding = CategoryItemBinding.inflate(inflater,parent,false);
+        CategoryItemBinding binding = CategoryItemBinding.inflate(inflater, parent, false);
         CategoryViewHolder viewHolder = new CategoryViewHolder(binding);
         return viewHolder;
     }

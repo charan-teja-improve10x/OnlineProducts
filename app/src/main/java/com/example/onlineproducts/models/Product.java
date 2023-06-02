@@ -13,7 +13,7 @@ public class Product implements Serializable {
     private String imageUrl;
     private Rating rating;
     private String description;
-    private  String category;
+    private String category;
 
     public String getDescription() {
         return description;
