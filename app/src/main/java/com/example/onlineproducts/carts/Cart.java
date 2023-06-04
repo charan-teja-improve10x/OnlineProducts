@@ -1,8 +1,16 @@
 package com.example.onlineproducts.carts;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class Cart {
+
+    private Integer id;
+    private Integer userId;
+    private String date;
+    @SerializedName("products")
+    private List<CartProduct> cartProducts;
     public Integer getId() {
         return id;
     }
@@ -34,11 +42,6 @@ public class Cart {
     public void setCartProducts(List<CartProduct> cartProducts) {
         this.cartProducts = cartProducts;
     }
-
-    private Integer id;
-    private Integer userId;
-    private String date;
-    private List<CartProduct> cartProducts;
 
 
 }

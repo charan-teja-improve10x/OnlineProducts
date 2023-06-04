@@ -1,5 +1,6 @@
 package com.example.onlineproducts.network;
 
+import com.example.onlineproducts.carts.Cart;
 import com.example.onlineproducts.carts.CartProduct;
 import com.example.onlineproducts.models.Product;
 
@@ -20,5 +21,5 @@ public interface FakeApiService {
     Call<Product> fetchProductDetails(@Path("productId") int productId);
 
     @GET("carts/{cartId}")
-    Call<CartProduct> fetchCartProducts(@Path("cartId") int cartId);
+    Call<Cart> fetchCartProducts(@Path("cartId") int cartId);
 }

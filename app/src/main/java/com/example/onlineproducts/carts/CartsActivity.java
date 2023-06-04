@@ -42,15 +42,15 @@ public class CartsActivity extends BaseActivity {
     }
 
     private void fetchCartProducts(int cartId) {
-      Call<CartProduct> call =  fakeApiService.fetchCartProducts(cartId);
-      call.enqueue(new Callback<CartProduct>() {
+      Call<Cart> call =  fakeApiService.fetchCartProducts(cartId);
+      call.enqueue(new Callback<Cart>() {
           @Override
-          public void onResponse(Call<CartProduct> call, Response<CartProduct> response) {
-              cartProductsAdapter.setCartProducts((List<CartProduct>) response.body());
+          public void onResponse(Call<Cart> call, Response<Cart> response) {
+              cartProductsAdapter.setCartProducts(response.body().getCartProducts());
           }
 
           @Override
-          public void onFailure(Call<CartProduct> call, Throwable t) {
+          public void onFailure(Call<Cart> call, Throwable t) {
               Toast.makeText(CartsActivity.this, "Fetch Failed", Toast.LENGTH_SHORT).show();
           }
       });

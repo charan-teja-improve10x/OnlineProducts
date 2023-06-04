@@ -1,6 +1,7 @@
 package com.example.onlineproducts.carts;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -35,8 +36,15 @@ public class CartProductsAdapter extends RecyclerView.Adapter<CartProductViewHol
     @Override
     public void onBindViewHolder(@NonNull CartProductViewHolder holder, int position) {
         CartProduct cartProduct = cartProducts.get(position);
-        holder.binding.quantityTxt.setText(String.valueOf(cartProduct.getQuantity()));
         holder.binding.productId.setText(String.valueOf(cartProduct.getProductId()));
+        if (cartProduct.getQuantity() == 0) {
+            holder.binding.removeIb.setVisibility(View.GONE);
+            holder.binding.quantityTxt.setVisibility(View.GONE);
+        } else {
+            holder.binding.quantityTxt.setText(String.valueOf(cartProduct.getQuantity()));
+            holder.binding.removeIb.setVisibility(View.VISIBLE);
+            holder.binding.quantityTxt.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
