@@ -12,9 +12,18 @@ public class Product implements Serializable {
 
     private String title;
     private Float price;
+    private String description;
 
     public String getTitle() {
         return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setTitle(String title) {
