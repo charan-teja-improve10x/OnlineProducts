@@ -24,7 +24,7 @@ public class ProductsActivity extends BaseActivity implements OnProductActionLis
     private ActivityProductsBinding binding;
     private ProductsAdapter adapter;
     private List<Product> products = new ArrayList<>();
-    private String category;
+    private Product product;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class ProductsActivity extends BaseActivity implements OnProductActionLis
         binding = ActivityProductsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Intent intent = getIntent();
-        category = intent.getStringExtra("category");
+        product = (Product) intent.getSerializableExtra("product");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Products");
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -50,19 +50,19 @@ public class ProductsActivity extends BaseActivity implements OnProductActionLis
         binding.productsRv.setAdapter(adapter);
     }
 
-    private void fetchProducts(String category) {
-//        Call<List<Product>> call = fakeApiService.fetchProducts(category);
-//        call.enqueue(new Callback<List<Product>>() {
-//            @Override
-//            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-//                adapter.createProducts(response.body());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Product>> call, Throwable t) {
-//                Toast.makeText(ProductsActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+    private void fetchProducts(Product product) {
+        Call<List<Product>> call = fakeApiService.fetchProducts(product.getId());
+        call.enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                adapter.createProducts(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                Toast.makeText(ProductsActivity.this, "Fetch Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -75,6 +75,6 @@ public class ProductsActivity extends BaseActivity implements OnProductActionLis
     @Override
     protected void onResume() {
         super.onResume();
-        fetchProducts(category);
+        fetchProducts(product);
     }
 }

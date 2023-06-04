@@ -1,6 +1,8 @@
 package com.example.onlineproducts.products;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -43,15 +45,15 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = products.get(position);
-//        holder.binding.titleTxt.setText(product.getTitle());
-//        holder.binding.priceTxt.setText(String.valueOf(product.getPrice()));
-//        holder.binding.ratingRb.setRating(product.getRating().getRate());
-//        holder.binding.rateTxt.setText(String.valueOf(product.getRating().getRate()));
-//        holder.binding.countTxt.setText(String.valueOf(product.getRating().getCount()));
-//        Picasso.get().load(product.getImageUrl()).into(holder.binding.imageIv);
-//        holder.binding.getRoot().setOnClickListener(v -> {
-//            onProductActionListener.onProductClick(product.getId());
-//        });
+        holder.binding.titleTxt.setText(product.getTitle());
+        holder.binding.priceTxt.setText(String.valueOf(product.getPrice()));
+        holder.binding.countTxt.setVisibility(View.GONE);
+        holder.binding.rateTxt.setVisibility(View.GONE);
+        holder.binding.ratingRb.setVisibility(View.GONE);
+        Picasso.get().load(String.valueOf(product.getImages(1))).into(holder.binding.imageIv);
+        holder.binding.getRoot().setOnClickListener(v -> {
+            onProductActionListener.onProductClick(product.getId());
+        });
     }
 
     @Override

@@ -64,8 +64,8 @@ public class CategoriesActivity extends BaseActivity implements ItemOnClickListe
 
     @Override
     public void categoryOnClick(Product product) {
-//        Intent intent = new Intent(this, ProductsActivity.class);
-//        intent.putExtra("category", category);
-//        startActivity(intent);
+        Intent intent = new Intent(this, ProductsActivity.class);
+        intent.putExtra("product", product);
+        startActivity(intent);
     }
 }

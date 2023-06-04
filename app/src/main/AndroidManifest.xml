@@ -28,9 +28,9 @@
 <!--        <activity-->
 <!--            android:name=".productdetails.ProductsDetailsActivity"-->
 <!--            android:exported="false" />-->
-<!--        <activity-->
-<!--            android:name=".products.ProductsActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".products.ProductsActivity"
+            android:exported="false" />
         <activity
             android:name=".category.CategoriesActivity"
             android:exported="false"></activity>

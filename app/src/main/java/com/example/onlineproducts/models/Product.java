@@ -1,15 +1,33 @@
 package com.example.onlineproducts.models;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
+import java.util.List;
 
 public class Product implements Serializable {
 
     private Integer id;
     private String name;
-    @SerializedName("image")
-    private String imageUrl;
+
+    private List<String> images;
+
+    private String title;
+    private Float price;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
 
     public Integer getId() {
         return id;
@@ -27,11 +45,11 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public List<String> getImages(int i) {
+        return images;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 }
