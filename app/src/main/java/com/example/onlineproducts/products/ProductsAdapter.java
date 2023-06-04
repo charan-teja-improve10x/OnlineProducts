@@ -50,7 +50,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         holder.binding.countTxt.setVisibility(View.GONE);
         holder.binding.rateTxt.setVisibility(View.GONE);
         holder.binding.ratingRb.setVisibility(View.GONE);
-        Picasso.get().load(String.valueOf(product.getImages(1))).into(holder.binding.imageIv);
+        Picasso.get().load(product.getImages().get(0)).into(holder.binding.imageIv);
         holder.binding.getRoot().setOnClickListener(v -> {
             onProductActionListener.onProductClick(product.getId());
         });

@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/image_iv"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="200dp"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,6 +42,7 @@
             style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="@+id/title_txt"
             app:layout_constraintTop_toBottomOf="@+id/title_txt" />
 
@@ -51,6 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="TextView"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/rating_rb"
             app:layout_constraintStart_toEndOf="@+id/rating_rb"
             app:layout_constraintTop_toTopOf="@+id/rating_rb" />
@@ -61,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="TextView"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/rate_txt"
             app:layout_constraintStart_toEndOf="@+id/rate_txt"
             app:layout_constraintTop_toTopOf="@+id/rate_txt" />
