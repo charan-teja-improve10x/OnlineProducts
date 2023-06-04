@@ -42,6 +42,4 @@ public class Cart {
     public void setCartProducts(List<CartProduct> cartProducts) {
         this.cartProducts = cartProducts;
     }
-
-
 }

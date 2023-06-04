@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.onlineproducts.BaseActivity;
 import com.example.onlineproducts.databinding.ActivityCategoriesBinding;
+import com.example.onlineproducts.models.Product;
 import com.example.onlineproducts.products.ProductsActivity;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class CategoriesActivity extends BaseActivity implements ItemOnClickListe
 
     private ActivityCategoriesBinding binding;
     private CategoriesAdapter categoryAdapter;
-    private List<String> items = new ArrayList<>();
+    private List<Product> items = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,24 +48,24 @@ public class CategoriesActivity extends BaseActivity implements ItemOnClickListe
     }
 
     private void getCategories() {
-        Call<List<String>> call = fakeApiService.fetchCategories();
-        call.enqueue(new Callback<List<String>>() {
+        Call<List<Product>> call = fakeApiService.fetchCategories();
+        call.enqueue(new Callback<List<Product>>() {
             @Override
-            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 categoryAdapter.createCategory(response.body());
             }
 
             @Override
-            public void onFailure(Call<List<String>> call, Throwable t) {
+            public void onFailure(Call<List<Product>> call, Throwable t) {
                 Toast.makeText(CategoriesActivity.this, "Fetch Categories failed", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
-    public void categoryOnClick(String category) {
-        Intent intent = new Intent(this, ProductsActivity.class);
-        intent.putExtra("category", category);
-        startActivity(intent);
+    public void categoryOnClick(Product product) {
+//        Intent intent = new Intent(this, ProductsActivity.class);
+//        intent.putExtra("category", category);
+//        startActivity(intent);
     }
 }

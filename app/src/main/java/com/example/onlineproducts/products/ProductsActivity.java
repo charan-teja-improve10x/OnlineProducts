@@ -51,18 +51,18 @@ public class ProductsActivity extends BaseActivity implements OnProductActionLis
     }
 
     private void fetchProducts(String category) {
-        Call<List<Product>> call = fakeApiService.fetchProducts(category);
-        call.enqueue(new Callback<List<Product>>() {
-            @Override
-            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                adapter.createProducts(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<List<Product>> call, Throwable t) {
-                Toast.makeText(ProductsActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        Call<List<Product>> call = fakeApiService.fetchProducts(category);
+//        call.enqueue(new Callback<List<Product>>() {
+//            @Override
+//            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+//                adapter.createProducts(response.body());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Product>> call, Throwable t) {
+//                Toast.makeText(ProductsActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override

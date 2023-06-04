@@ -19,7 +19,7 @@ import retrofit2.Response;
 
 public class CartsActivity extends BaseActivity {
 
-    private ActivityCartsBinding binding;
+      private ActivityCartsBinding binding;
     private CartProductsAdapter cartProductsAdapter;
     private List<CartProduct> cartProducts = new ArrayList<>();
 
@@ -42,18 +42,18 @@ public class CartsActivity extends BaseActivity {
     }
 
     private void fetchCartProducts(int cartId) {
-      Call<Cart> call =  fakeApiService.fetchCartProducts(cartId);
-      call.enqueue(new Callback<Cart>() {
-          @Override
-          public void onResponse(Call<Cart> call, Response<Cart> response) {
-              cartProductsAdapter.setCartProducts(response.body().getCartProducts());
-          }
-
-          @Override
-          public void onFailure(Call<Cart> call, Throwable t) {
-              Toast.makeText(CartsActivity.this, "Fetch Failed", Toast.LENGTH_SHORT).show();
-          }
-      });
+//      Call<Cart> call =  fakeApiService.fetchCartProducts(cartId);
+//      call.enqueue(new Callback<Cart>() {
+//          @Override
+//          public void onResponse(Call<Cart> call, Response<Cart> response) {
+//              cartProductsAdapter.setCartProducts(response.body().getCartProducts());
+//          }
+//
+//          @Override
+//          public void onFailure(Call<Cart> call, Throwable t) {
+//              Toast.makeText(CartsActivity.this, "Fetch Failed", Toast.LENGTH_SHORT).show();
+//          }
+//      });
     }
 
     @Override

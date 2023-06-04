@@ -15,9 +15,9 @@ public class CartProductsAdapter extends RecyclerView.Adapter<CartProductViewHol
 
     private List<CartProduct> cartProducts;
 
-    public CartProductsAdapter(List<CartProduct> cartProducts){
-        this.cartProducts = cartProducts;
-    }
+  public CartProductsAdapter(List<CartProduct> cartProducts){
+      this.cartProducts = cartProducts;
+     }
 
     void setCartProducts(List<CartProduct> cartProducts) {
         this.cartProducts = cartProducts;

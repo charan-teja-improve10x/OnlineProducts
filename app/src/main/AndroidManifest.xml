@@ -13,9 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineProducts"
         tools:targetApi="31">
-        <activity
-            android:name=".carts.CartsActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".carts.CartsActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -25,16 +25,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".productdetails.ProductsDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".products.ProductsActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".productdetails.ProductsDetailsActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".products.ProductsActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".category.CategoriesActivity"
             android:exported="false"></activity>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
