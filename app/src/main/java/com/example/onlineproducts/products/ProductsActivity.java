@@ -46,7 +46,7 @@ public class ProductsActivity extends BaseActivity implements OnProductActionLis
     }
 
     private void connectAdapter() {
-        binding.productsRv.setLayoutManager(new GridLayoutManager(this,2));
+        binding.productsRv.setLayoutManager(new GridLayoutManager(this, 2));
         binding.productsRv.setAdapter(adapter);
     }
 
@@ -68,7 +68,7 @@ public class ProductsActivity extends BaseActivity implements OnProductActionLis
     @Override
     public void onProductClick(int productId) {
         Intent intent = new Intent(this, ProductsDetailsActivity.class);
-        intent.putExtra("productId",productId);
+        intent.putExtra("productId", productId);
         startActivity(intent);
     }
 

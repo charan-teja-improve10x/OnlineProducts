@@ -19,7 +19,7 @@ import retrofit2.Response;
 
 public class CartsActivity extends BaseActivity {
 
-      private ActivityCartsBinding binding;
+    private ActivityCartsBinding binding;
     private CartProductsAdapter cartProductsAdapter;
     private List<CartProduct> cartProducts = new ArrayList<>();
 

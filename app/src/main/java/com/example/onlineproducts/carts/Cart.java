@@ -11,6 +11,7 @@ public class Cart {
     private String date;
     @SerializedName("products")
     private List<CartProduct> cartProducts;
+
     public Integer getId() {
         return id;
     }

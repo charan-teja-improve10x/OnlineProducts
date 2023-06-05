@@ -25,11 +25,11 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.carts_item){
-            Intent intent = new Intent(this,CartsActivity.class);
+        if (item.getItemId() == R.id.carts_item) {
+            Intent intent = new Intent(this, CartsActivity.class);
             startActivity(intent);
             return true;
-        }else {
+        } else {
             return super.onOptionsItemSelected(item);
         }
     }

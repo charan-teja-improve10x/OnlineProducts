@@ -33,11 +33,12 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     void setOnProductActionListener(OnProductActionListener onProductActionListener) {
         this.onProductActionListener = onProductActionListener;
     }
+
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        ProductItemBinding binding = ProductItemBinding.inflate(inflater,parent,false);
+        ProductItemBinding binding = ProductItemBinding.inflate(inflater, parent, false);
         ProductViewHolder viewHolder = new ProductViewHolder(binding);
         return viewHolder;
     }
