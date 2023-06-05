@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.onlineproducts.BaseActivity;
+import com.example.onlineproducts.SearchItemActivity;
 import com.example.onlineproducts.databinding.ActivityCategoriesBinding;
 import com.example.onlineproducts.models.Product;
 import com.example.onlineproducts.products.ProductsActivity;
@@ -19,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CategoriesActivity extends BaseActivity implements ItemOnClickListener {
+public class CategoriesActivity extends SearchItemActivity implements ItemOnClickListener {
 
     private ActivityCategoriesBinding binding;
     private CategoriesAdapter categoryAdapter;

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.onlineproducts.BaseActivity;
+import com.example.onlineproducts.SearchItemActivity;
 import com.example.onlineproducts.databinding.ActivityProductsBinding;
 import com.example.onlineproducts.models.Product;
 import com.example.onlineproducts.productdetails.ProductsDetailsActivity;
@@ -19,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductsActivity extends BaseActivity implements OnProductActionListener {
+public class ProductsActivity extends SearchItemActivity implements OnProductActionListener {
 
     private ActivityProductsBinding binding;
     private ProductsAdapter adapter;

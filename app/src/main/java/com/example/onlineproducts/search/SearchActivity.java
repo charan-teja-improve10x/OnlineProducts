@@ -16,5 +16,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySearchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportActionBar().setTitle("Search");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
