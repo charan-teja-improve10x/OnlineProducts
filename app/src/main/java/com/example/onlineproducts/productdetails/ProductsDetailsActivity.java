@@ -2,6 +2,7 @@ package com.example.onlineproducts.productdetails;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.onlineproducts.BaseActivity;
@@ -34,11 +35,13 @@ public class ProductsDetailsActivity extends BaseActivity {
         call.enqueue(new Callback<Product>() {
             @Override
             public void onResponse(Call<Product> call, Response<Product> response) {
+                setProgressBarVisible();
                 Product product = response.body();
                 binding.descriptionTxt.setText(product.getDescription());
                 binding.productPriceTxt.setText(String.valueOf(product.getPrice()));
                 binding.productTitleTxt.setText(product.getTitle());
                 Picasso.get().load(product.getImages().get(0)).into(binding.posterIv);
+                setProgressBarGone();
             }
 
             @Override
@@ -46,5 +49,12 @@ public class ProductsDetailsActivity extends BaseActivity {
                 Toast.makeText(ProductsDetailsActivity.this, "Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    private void setProgressBarVisible() {
+        binding.progressBar3.setVisibility(View.VISIBLE);
+    }
+
+    private void setProgressBarGone() {
+        binding.progressBar3.setVisibility(View.GONE);
     }
 }

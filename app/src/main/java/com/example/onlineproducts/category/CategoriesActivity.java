@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.onlineproducts.BaseActivity;
@@ -53,7 +54,9 @@ public class CategoriesActivity extends SearchItemActivity implements ItemOnClic
         call.enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                setProgressBarVisible();
                 categoryAdapter.createCategory(response.body());
+                setProgressBarGone();
             }
 
             @Override
@@ -68,5 +71,13 @@ public class CategoriesActivity extends SearchItemActivity implements ItemOnClic
         Intent intent = new Intent(this, ProductsActivity.class);
         intent.putExtra("product", product);
         startActivity(intent);
+    }
+
+    private void setProgressBarVisible() {
+        binding.progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void setProgressBarGone() {
+        binding.progressBar.setVisibility(View.GONE);
     }
 }
